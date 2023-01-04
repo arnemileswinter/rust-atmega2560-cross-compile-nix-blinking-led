@@ -12,13 +12,13 @@
     {
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
-            pkgs.pkgsCross.avr.buildPackages.gcc
-            pkgs.pkgsCross.avr.buildPackages.binutils
-            ravedude.defaultPackage.${system}
-            (fenix.packages.${system}.fromToolchainFile {
-              file = ./rust-toolchain.toml;
-              sha256 = "sha256-Y2DBRMR6w4fJu+jwplWInTBzNtbr0EW3yZ3CN9YTI/8=";
-            })
+          pkgs.pkgsCross.avr.buildPackages.gcc
+          pkgs.avrdude
+          ravedude.defaultPackage.${system}
+          (fenix.packages.${system}.fromToolchainFile {
+            file = ./rust-toolchain.toml;
+            sha256 = "sha256-Y2DBRMR6w4fJu+jwplWInTBzNtbr0EW3yZ3CN9YTI/8=";
+          })
         ];
       };
     };
