@@ -1,8 +1,4 @@
-Nix shell environment for cross compiling rust for arduinos.
-
-**currently broken.**
-
-Run `nix develop --ignore-environment` and `cargo build` to build and deploy the blinking-LED program.
+Run `nix develop --ignore-environment` and `cargo build` to build the blinking-LED program for the atmega2560.
 You might need to enable nix experimental features flakes and nix commands.
 
 ------
