@@ -17,7 +17,7 @@
           ravedude.defaultPackage.${system}
           (fenix.packages.${system}.fromToolchainFile {
             file = ./rust-toolchain.toml;
-            sha256 = "sha256-Y2DBRMR6w4fJu+jwplWInTBzNtbr0EW3yZ3CN9YTI/8=";
+            sha256 = "sha256-kI+vy5ThOmIdokk5Xtg1I7MyG1xzihcfI0T+hrAgsjA=";
           })
         ];
       };
