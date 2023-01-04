@@ -18,7 +18,7 @@ embedded-hal = "0.2.3"
 
 [dependencies.arduino-hal]
 git = "https://github.com/rahix/avr-hal"
-rev = "4170a773d4d76cc93433d2455ed8b14e573ebe70"
+rev = "1ab563c8c9af4ee4d20ef7dacaa945aa3ae4dddc"
 features = ["arduino-mega2560"]
 
 # Configure the build for minimal size - AVRs have very little program memory

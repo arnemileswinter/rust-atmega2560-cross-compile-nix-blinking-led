@@ -1,9 +1,6 @@
 {
   inputs = {
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    fenix.url = "github:nix-community/fenix";
     ravedude.url = "github:Rahix/avr-hal?dir=ravedude";
     nixpkgs.url = "nixpkgs/nixos-unstable";
   };
@@ -14,21 +11,15 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
-        LD_LIBRARY_PATH = "${pkgs.pkgsCross.avr.avrlibc}/avr/lib";
-        buildInputs = 
-            (with pkgs.pkgsCross.avr; [
-              buildPackages.gcc
-              buildPackages.bintools
-              buildPackages.binutils
-              avrlibc
-            ]) ++ [
+        buildInputs = [
+            pkgs.pkgsCross.avr.buildPackages.gcc
+            pkgs.pkgsCross.avr.buildPackages.binutils
             ravedude.defaultPackage.${system}
-            (with fenix.packages.${system}; combine [
-              minimal.cargo
-              minimal.rustc
-              latest.rust-src
-            ])
-          ];
+            (fenix.packages.${system}.fromToolchainFile {
+              file = ./rust-toolchain.toml;
+              sha256 = "sha256-Y2DBRMR6w4fJu+jwplWInTBzNtbr0EW3yZ3CN9YTI/8=";
+            })
+        ];
       };
     };
 }
